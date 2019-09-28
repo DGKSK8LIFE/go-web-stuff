@@ -33,8 +33,11 @@ func main() {
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "http response: %v", recorder.Responses)
 	}
+
+	fmt.Printf("downloaded %d responses\n", len(recorder.Responses))
+	
 	http.HandleFunc("/", handler)
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
 
-	fmt.Printf("downloaded %d responses\n", len(recorder.Responses))
+
 }
